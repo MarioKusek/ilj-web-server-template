@@ -57,41 +57,44 @@ testlogger {
 }
 
 // lombok
-configurations {
-  compileOnly {
-    extendsFrom annotationProcessor
-  }
-}
+//configurations {
+//  compileOnly {
+//    extendsFrom annotationProcessor
+//  }
+//}
 
 dependencies {
     // lombok
     //   builders - https://www.baeldung.com/lombok-builder
-    compileOnly 'org.projectlombok:lombok:1.18.14'
-    annotationProcessor 'org.projectlombok:lombok'
+    //compileOnly 'org.projectlombok:lombok:1.18.14'
+    //annotationProcessor 'org.projectlombok:lombok'
 
     // for mapping POJO (DTO <--> Entity) http://modelmapper.org/getting-started/
-    implementation 'org.modelmapper:modelmapper:2.3.8'
+    //implementation 'org.modelmapper:modelmapper:2.3.8'
 
     // Apache Commons BeanUtils - https://commons.apache.org/proper/commons-beanutils/apidocs/org/apache/commons/beanutils/BeanUtils.html
     // Tutorial: https://www.baeldung.com/apache-commons-beanutils
-    implementation 'commons-beanutils:commons-beanutils:1.9.4'
+    //implementation 'commons-beanutils:commons-beanutils:1.9.4'
 
     // Apache Commons Lang3
     //   equals, hashcode, toString builders - http://www.java2s.com/Tutorial/Java/0500__Apache-Common/EqualsBuilderreflectionEquals.htm
     //   tuple, triple
-    implementation 'org.apache.commons:commons-lang3:3.11'
+    //implementation 'org.apache.commons:commons-lang3:3.11'
 
     // vavr - https://www.vavr.io/vavr-docs/
-    implementation 'io.vavr:vavr:0.9.3'
+    //implementation 'io.vavr:vavr:0.9.3'
 
 
     // java 11 missing dependencies
-    compile('javax.xml.bind:jaxb-api:2.3.1')
-    runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
+    //implementation('javax.xml.bind:jaxb-api:2.3.1')
+    //runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
+    
+    implementation 'org.slf4j:slf4j-log4j12:1.7.30'
+    
 
 
     //////// TESTING /////////
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+  	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     // parametrized tests
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
@@ -107,7 +110,20 @@ dependencies {
     // AWaitility
     testImplementation 'org.awaitility:awaitility:4.0.3'
     // REST Assured
-    testImplementation 'io.rest-assured:rest-assured:4.3.1'    
+    //testImplementation 'io.rest-assured:rest-assured:4.3.1'    
 }
+
+// kreira zip za predavanja
+task lectureZip(type: Zip) {
+  from project.fileTree("$project.projectDir") {
+      exclude "$buildDir.name/**"
+      exclude "bin/**"
+      exclude ".gradle/**"
+  }
+  archiveFileName = project.name + ".zip"
+  destinationDirectory = file("$buildDir")
+
+}
+
 // to check for new dependencies run following
 // $ gradle dependencyUpdates
