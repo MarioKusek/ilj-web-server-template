@@ -1,6 +1,10 @@
 // generating project:
 // gradle init --type java-library
 // $ gradle wrapper --gradle-version 7.3-rc-2
+// $ mv lib/src ./
+// $ mv lib/build.gradle ./
+// next line removes line with include('lib')
+// $ sed '/^include('\''lib'\'')$/d' > settings.gradle.tmp; rm settings.gradle; mv settings.gradle.tmp settings.gradle
 
 // generating .gitignore 
 // $ curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/windows,linux,macos,java,eclipse,intellij,netbeans,gradle > .gitignore
@@ -13,7 +17,7 @@
 
 
 plugins {
-  id 'java'
+  	id 'java'
     id 'eclipse'
     id 'com.github.ben-manes.versions' version '0.39.0' // find new versions of dependency task: dependencyUpdates
     id 'com.adarshr.test-logger' version '3.0.0' // log tests in console
@@ -119,4 +123,4 @@ tasks.register('lectureZip', Zip) {
 }
 
 // to check for new dependencies run following
-// $ gradle dependencyUpdates
+// $ ./gradlew dependencyUpdates
