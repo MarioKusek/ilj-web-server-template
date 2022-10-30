@@ -19,8 +19,8 @@
 plugins {
   	id 'java'
     id 'eclipse'
-    id 'com.github.ben-manes.versions' version '0.39.0' // find new versions of dependency task: dependencyUpdates
-    id 'com.adarshr.test-logger' version '3.0.0' // log tests in console
+    id 'com.github.ben-manes.versions' version '0.43.0' // find new versions of dependency task: dependencyUpdates
+    id 'com.adarshr.test-logger' version '3.2.0' // log tests in console
 }
 
 repositories {
@@ -86,26 +86,26 @@ dependencies {
     //implementation('javax.xml.bind:jaxb-api:2.3.1')
     //runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
     
-    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.14.1'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.19.0'
     
 
 
     //////// TESTING /////////
-  	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+  	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
     // parametrized tests
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.1'
     // Mockito
-    testImplementation 'org.mockito:mockito-core:4.0.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:4.0.0'
+    testImplementation 'org.mockito:mockito-core:4.8.1'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.8.1'
     // AssertJ
-    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
     // JSON 
     testImplementation 'com.revinate:assertj-json:1.2.0'
     // HTML 
-    testImplementation 'org.jsoup:jsoup:1.14.3'
+    testImplementation 'org.jsoup:jsoup:1.15.3'
     // AWaitility
-    testImplementation 'org.awaitility:awaitility:4.1.0'
+    testImplementation 'org.awaitility:awaitility:4.2.0'
     // REST Assured
     //testImplementation 'io.rest-assured:rest-assured:4.3.1'    
 }
@@ -124,3 +124,5 @@ tasks.register('lectureZip', Zip) {
 
 // to check for new dependencies run following
 // $ ./gradlew dependencyUpdates
+// to update install https://github.com/kevcodez/gradle-upgrade-interactive and run:
+// $ gradle-upgrade-interactive -r release
